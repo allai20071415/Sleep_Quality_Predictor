@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sleep Quality Predictor</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+<svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#5b5fd6"/><path d="M30 12a13 13 0 1 0 6 22 11 11 0 0 1-6-22z" fill="#f5f2ff"/><circle cx="33" cy="15" r="1.6" fill="#f5f2ff"/><circle cx="37" cy="23" r="1.1" fill="#f5f2ff"/></svg>
+<div><h1>Sleep Quality Predictor</h1><p>A smart way to monitor and improve your sleep, built around your work day</p></div>
+</header>
+
+<div class="grid">
+<section class="card" aria-label="Inputs">
+<fieldset><legend>Last night</legend>
+<div class="row">
+<label>Bedtime<input type="time" id="bed" value="23:00"></label>
+<label>Wake-up time<input type="time" id="wake" value="06:30"></label>
+</div>
+<label>Sleep duration (hours) <span class="tag" id="auto">auto from times</span><input type="number" id="dur" min="0" max="16" step="0.25" value="7.5"></label>
+<div class="radios" role="radiogroup" aria-label="Sleep interruptions"><span style="font-size:.85rem;color:var(--mute)">Woke up during the night?</span>
+<label><input type="radio" name="intr" value="0" checked> No</label><label><input type="radio" name="intr" value="1"> Yes</label></div>
+</fieldset>
+
+<fieldset><legend>Daily habits</legend>
+<div class="row">
+<label>Caffeine intake<select id="caf"><option>None</option><option selected>Low</option><option>Moderate</option><option>High</option></select></label>
+<label>Mood before sleep<select id="mood"><option>Happy</option><option selected>Neutral</option><option>Sad</option><option>Anxious</option></select></label>
+<label>Exercise (minutes)<input type="number" id="ex" min="0" max="300" value="30"></label>
+<label>Screen time before bed (min)<input type="number" id="scr" min="0" max="300" value="45"></label>
+</div>
+<label>Stress level <span class="val" id="stv">5</span><input type="range" id="stress" min="0" max="10" value="5"></label>
+<label>Tiredness level <span class="val" id="tiv">5</span><input type="range" id="tired" min="0" max="10" value="5"></label>
+</fieldset>
+
+<fieldset><legend>Work</legend>
+<label>Work schedule<select id="shift">
+<option value="day">Day shift</option><option value="night">Night shift</option><option value="rotating">Rotating shifts</option><option value="flex">Flexible / remote</option><option value="physical">Physically demanding work</option></select></label>
+<div class="row">
+<label>Daily work hours<input type="number" id="wh" min="0" max="18" step="0.5" value="8"></label>
+<label>Daily commute (hours)<input type="number" id="cm" min="0" max="6" step="0.25" value="1"></label>
+</div>
+</fieldset>
+
+<div class="btns">
+<button class="main" id="go">Predict sleep quality</button>
+<button id="reset">Reset inputs</button>
+<button id="hist">View past predictions</button>
+</div>
+</section>
+
+<section aria-live="polite">
+<div class="card" id="out">
+<h2>Your prediction</h2>
+<p class="empty">Enter last night's details and your work pattern, then choose Predict sleep quality.</p>
+</div>
+<div class="card" id="history" style="margin-top:18px">
+<h2>Past predictions</h2>
+<p class="empty">No predictions yet. Each one you make is saved here.</p>
+</div>
+</section>
+</div>
+<p class="small">This is a rule-based scoring model for habit guidance, not a medical tool. If tiredness stays high despite enough sleep, talk to a doctor.</p>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
